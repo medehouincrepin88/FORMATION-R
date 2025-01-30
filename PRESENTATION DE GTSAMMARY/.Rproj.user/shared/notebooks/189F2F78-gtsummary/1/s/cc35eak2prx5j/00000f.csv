@@ -1,0 +1,63 @@
+"0",""
+"0","#install.packages(""gtsummary"")"
+"0","#install.packages(""flextable"")"
+"0","#install.packages(""gt"")"
+"0","#install.packages(""readxl"")"
+"0","#install.packages(""dplyr"")"
+"0","#install.packages(""DT"")"
+"0",""
+"0",""
+"0",""
+"0","library(gtsummary)"
+"2","Avis : le package ‘gtsummary’ a été compilé avec la version R 4.3.3"
+"0","library(gt)"
+"2","Avis : le package ‘gt’ a été compilé avec la version R 4.3.3"
+"2","Registered S3 methods overwritten by 'htmltools':
+  method               from         
+  print.html           tools:rstudio
+  print.shiny.tag      tools:rstudio
+  print.shiny.tag.list tools:rstudio
+"
+"0","library(flextable)"
+"2","Avis : le package ‘flextable’ a été compilé avec la version R 4.3.3"
+"2","Registered S3 method overwritten by 'data.table':
+  method           from
+  print.data.table     
+"
+"2","Registered S3 method overwritten by 'rmarkdown':
+  method         from
+  print.paged_df     
+"
+"2","
+Attachement du package : ‘flextable’
+
+"
+"2","L'objet suivant est masqué depuis ‘package:gtsummary’:
+
+    continuous_summary
+
+"
+"0","library(readxl)"
+"2","Avis : le package ‘readxl’ a été compilé avec la version R 4.3.3"
+"0","library(dplyr)"
+"2","Avis : le package ‘dplyr’ a été compilé avec la version R 4.3.3"
+"2","
+Attachement du package : ‘dplyr’
+
+"
+"2","Les objets suivants sont masqués depuis ‘package:stats’:
+
+    filter, lag
+
+"
+"2","Les objets suivants sont masqués depuis ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+"
+"0","library(DT)"
+"2","Avis : le package ‘DT’ a été compilé avec la version R 4.3.3"
+"2","Registered S3 method overwritten by 'htmlwidgets':
+  method           from         
+  print.htmlwidget tools:rstudio
+"

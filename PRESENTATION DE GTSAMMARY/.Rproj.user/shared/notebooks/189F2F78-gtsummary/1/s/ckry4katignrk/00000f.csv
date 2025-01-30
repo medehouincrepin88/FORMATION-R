@@ -1,0 +1,10 @@
+"0",""
+"0","# Présentation de la base "
+"0","data <- read_excel(""data"")"
+"2","Error in exists(cacheKey, where = .rs.WorkingDataEnv, inherits = FALSE) : 
+  invalid first argument
+"
+"2","Error in assign(cacheKey, frame, .rs.CachedDataEnv) : 
+  attempt to use zero-length variable name
+"
+"0","DT::datatable(data, options=list(pageLength=5))"

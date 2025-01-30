@@ -1,0 +1,6 @@
+"0",""
+"0","data %>% "
+"0","  dplyr::select(sexe, instruction , Statut_logement, age ) %>% "
+"0","  gtsummary::tbl_summary(by = Statut_logement , label = list(sexe ~ ""GENRE"", instruction ~ ""NIVEAU D'INSTRUCTION"", age ~ ""AGE"")) %>% "
+"0","  gtsummary::bold_labels() %>% "
+"0","  gtsummary::italicize_labels()"

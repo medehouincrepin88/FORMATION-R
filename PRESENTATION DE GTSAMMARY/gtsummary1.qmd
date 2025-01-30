@@ -1,0 +1,86 @@
+---
+title: ""
+format: html
+editor: visual
+---
+
+![](titre.jpg){fig-align="center"}
+
+`Le package gtsummary : utilisé pour créer des tableaux de synthèse élégants et personnalisés, souvent à des fins de rapport statistique`
+
+# **LES PACKAGES NECESSAIRES**
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+
+#install.packages("gtsummary")
+#install.packages("flextable")
+#install.packages("gt")
+#install.packages("readxl")
+#install.packages("dplyr")
+#install.packages("DT")
+
+
+library(gtsummary)# Utilisé pour créer des tableaux de synthèse élégants, souvent à des fins de rapport statistique
+
+library(gt) # Souvent utilisé pour convertir les sorties de gtsummary
+library(flextable) # Souvent utilisé pour convertir les sorties de gtsummary
+
+library(readxl) # Utilisé pour importer des fichiers Excel
+library(dplyr) # Fournit un ensemble de fonctions pour manipuler et transformer les données
+
+library(DT) # Permet de créer des tableaux interactifs en HTML 
+```
+
+# PRESENTATION DE LA BASE DE DONNEE
+
+```{r}
+data <- read_excel("data.xlsx")
+
+DT::datatable(data, options = list(pageLength = 5))
+
+```
+
+# STATISTIQUE UNIVARIEE
+
+```{r}
+
+data %>% names()
+theme_gtsummary_language("fr")
+data %>% 
+  dplyr::select(sexe, instruction , age ) %>% 
+  gtsummary::tbl_summary(label = list(sexe ~ "GENRE", instruction ~ "NIVEAU D'INSTRUCTION", age ~ "AGE")) %>% 
+  gtsummary::bold_labels() %>% 
+  gtsummary::italicize_labels()
+```
+
+# STATITISTIQUE BIVARIEE
+
+```{r}
+
+data %>% 
+  dplyr::select(sexe, instruction , Statut_logement, age ) %>% 
+  gtsummary::tbl_summary(by = Statut_logement , label = list(sexe ~ "GENRE", instruction ~ "NIVEAU D'INSTRUCTION", age ~ "AGE")) %>% 
+  gtsummary::bold_labels() %>% 
+  gtsummary::italicize_labels()
+```
+
+# COMBINER LA STATISTIQUE UNIVARIEE ET BIVARIEE
+
+```{r}
+
+tab1 = data %>% 
+  dplyr::select(sexe, instruction , q8,  age ) %>% 
+  gtsummary::tbl_summary(label = list(sexe ~ "GENRE", instruction ~ "NIVEAU D'INSTRUCTION", q8~ "ACTIVITE PRINCIPALE", age ~ "AGE")) %>% 
+  gtsummary::bold_labels() %>% 
+  gtsummary::italicize_labels()
+
+
+tab2 = data %>% 
+  dplyr::select(sexe, instruction , Statut_logement, q8,  age ) %>% 
+  gtsummary::tbl_summary(by = Statut_logement , label = list(sexe ~ "GENRE", instruction ~ "NIVEAU D'INSTRUCTION", q8~ "ACTIVITE PRINCIPALE",age ~ "AGE")) %>% 
+  gtsummary::bold_labels() %>% 
+  gtsummary::italicize_labels()
+
+gtsummary::tbl_merge(list(tab1, tab2), tab_spanner = c("ANALYSE UNIVARIEE", "ANALYSE BIVARIEE")) %>% gtsummary::modify_header(update = list(label ~ "**RESUME DES VARIABLES**"))
+
+```
